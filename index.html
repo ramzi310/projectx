@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <link rel="stylesheet" href="index.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ramzi-style Car Rental — Demo</title>
+  <meta name="description" content="Location de voitures à Oran — Réservez facilement. Livraison aéroport, prix transparents." />
+  <style>
+    /* Simple, clean CSS (mobile-first) */
+    :root{
+      --accent:#0b78d1;
+      --dark:#111;
+      --muted:#666;
+      --card:#fff;
+      --bg:#f6f7fb;
+      --radius:12px;
+      --maxw:1100px;
+      scroll-behavior: smooth;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;background:var(--bg);color:var(--dark);line-height:1.4}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:20px}
+    header{background:linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.9));position:sticky;top:0;backdrop-filter:blur(6px);z-index:20;}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#34a7ff);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    nav ul{display:flex;gap:14px;list-style:none;padding:0;margin:0}
+    nav a{text-decoration:none;color:var(--dark);font-weight:600}
+    .btn-primary{background:var(--accent);color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr;gap:18px;align-items:center;padding:36px 0}
+    .hero-left h1{font-size:clamp(22px,5vw,40px);margin:0 0 8px}
+    .hero-left p{color:var(--muted);margin:0 0 14px}
+    .cta-row{display:flex;gap:10px;flex-wrap:wrap}
+    /* Cards / gallery */
+    .cards{display:grid;grid-template-columns:repeat(1,1fr);gap:14px}
+    .card{background:var(--card);border-radius:12px;padding:12px;box-shadow:0 6px 18px rgba(15,20,30,0.06);display:flex;gap:12px;align-items:center}
+    .card img{width:160px;height:100px;object-fit:cover;border-radius:8px}
+    .card .meta{flex:1}
+    .price{font-weight:800;color:var(--accent)}
+    /* Why choose / contact */
+    .grid-2{display:grid;grid-template-columns:1fr;gap:16px}
+    footer{padding:18px 0;color:var(--muted);font-size:14px}
+    .whatsapp-fab{position:fixed;right:18px;bottom:18px;background:#25D366;color:#fff;width:56px;height:56px;border-radius:999px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,0.15);z-index:30;text-decoration:none}
+    /* Responsive */
+    @media(min-width:720px){
+      .hero{grid-template-columns:1fr 480px}
+      .cards{grid-template-columns:repeat(2,1fr)}
+      .grid-2{grid-template-columns:1fr 360px}
+    }
+    @media(min-width:1100px){
+      .cards{grid-template-columns:repeat(3,1fr)}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="logo">RC</div>
+        <div>
+          <div style="font-weight:800">ramzi Cars</div>
+          <div style="font-size:12px;color:var(--muted)">Location de voitures • Oran</div>
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#voitures">Nos Voitures</a></li>
+          <li><a href="#apropos">À propos</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div style="display:flex;gap:10px;align-items:center">
+        <a class="btn-primary" href="#voitures">Voir nos voitures</a>
+        <a href="tel:+213541840736" style="text-decoration:none;color:var(--muted);font-weight:700">APPELER</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" id="accueil">
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Location de voitures à Oran</h1>
+        <p>Votre satisfaction est notre priorité — Réservez maintenant. Livraison à l'aéroport, prix transparents et flotte récente.</p>
+        <div class="cta-row">
+          <a class="btn-primary" href="#voitures">Voir nos voitures</a>
+          <a href="https://wa.me/+213541840736?text=Bonjour%20je%20veux%20réserver" class="btn" style="padding:10px;border-radius:10px;background:#fff;border:1px solid #eee;text-decoration:none;font-weight:700">WhatsApp</a>
+        </div>
+      </div>
+
+      <div style="border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#fff, #f0f6ff);padding:12px">
+        <img src="https://via.placeholder.com/520x320?text=Voiture+à+louer" alt="Voitures à louer" style="width:100%;height:auto;display:block;border-radius:8px">
+      </div>
+    </section>
+
+    <section id="voitures" style="margin-top:18px">
+      <h2>Nos Voitures</h2>
+      <div class="cards" id="car-list">
+        <!-- Example card -->
+        <article class="card">
+          <img src="Renault_Clio_R.S._Line_(V)_–_f_17102021.jpg">
+          <div class="meta">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <strong>Renault Clio</strong>
+              <div class="price">6.000 DA/j</div>
+            </div>
+            <p style="margin:8px 0;color:var(--muted)">Automatique • 4 portes • Climatisation</p>
+            <div style="display:flex;gap:8px">
+              <a class="btn-primary" href="#contact" style="padding:8px 12px;font-size:14px">Réserver</a>
+              <a href="https://wa.me/0000000000?text=Intéressé%20par%20Renault%20Clio" style="padding:8px 12px;border-radius:8px;border:1px solid #eee;text-decoration:none;font-weight:700">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Duplicate/replace cards -->
+        <article class="card">
+          <img src="Peugeot_208_5door_facelift.jpg">
+          <div class="meta">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <strong>Peugeot 208</strong>
+              <div class="price">7.500 DA/j</div>
+            </div>
+            <p style="margin:8px 0;color:var(--muted)">Manuelle • 5 sièges • GPS</p>
+            <div style="display:flex;gap:8px">
+              <a class="btn-primary" href="#contact" style="padding:8px 12px;font-size:14px">Réserver</a>
+              <a href="https://wa.me/0000000000?text=Intéressé%20par%20Peugeot%20208" style="padding:8px 12px;border-radius:8px;border:1px solid #eee;text-decoration:none;font-weight:700">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="nissan qashqai.jpg">
+          <div class="meta">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <strong>Nissan Qashqai</strong>
+              <div class="price">12.000 DA/j</div>
+            </div>
+            <p style="margin:8px 0;color:var(--muted)">SUV • 5 portes • Confort</p>
+            <div style="display:flex;gap:8px">
+              <a class="btn-primary" href="#contact" style="padding:8px 12px;font-size:14px">Réserver</a>
+              <a href="https://wa.me/0000000000?text=Intéressé%20par%20Nissan%20Qashqai" style="padding:8px 12px;border-radius:8px;border:1px solid #eee;text-decoration:none;font-weight:700">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="apropos" style="margin:26px 0">
+      <div class="grid-2">
+        <div style="background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(15,20,30,0.06)">
+          <h3>Pourquoi nous choisir</h3>
+          <ul style="color:var(--muted)">
+            <li>Service professionnel</li>
+            <li>Prix fixes et imbattables</li>
+            <li>Livraison à l'aéroport</li>
+            <li>Véhicules récents</li>
+          </ul>
+        </div>
+
+        <div id="contact" style="background:linear-gradient(180deg,#fff,#f8fbff);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(15,20,30,0.04)">
+          <h3>Contact</h3>
+          <p>Gambetta, Avenue canastel<br>Oran 31000</p>
+          <p>Email: <a href="mailto:contactbenyettouramzi246@gmail.com">benyettouramzi246@gmail.com</a></p>
+          <p>Téléphone: <a href="tel:+213541840736">+21354184036</a></p>
+          <div style="margin-top:12px">
+            <a class="btn-primary" href="https://wa.me/0000000000?text=Bonjour%20je%20veux%20réserver">Contactez via WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+      <div>© <span id="year"></span> Ramzi Dream Car — Location de Voitures Oran</div>
+      <div style="color:var(--muted)">Conception & développement — Votre agence</div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp floating -->
+  <a class="whatsapp-fab" href="https://wa.me/0000000000?text=Bonjour%20je%20voudrais%20réserver" aria-label="WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+      <path d="M20.5 3.5L3.5 20.5" stroke="white" stroke-width="0"></path>
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.149-.672.15-.198.297-.768.966-.942 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.447-.521.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.074-.149-.672-1.62-.922-2.223-.242-.583-.487-.504-.672-.513l-.572-.01c-.198 0-.52.074-.793.372s-1.04 1.016-1.04 2.479 1.065 2.877 1.213 3.074c.149.198 2.095 3.2 5.076 4.487  .709.306 1.26.489 1.692.626.71.227 1.357.195 1.869.118.57-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.273-.198-.57-.347z" fill="white"/>
+    </svg>
+  </a>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Example: dynamic car data loader (replace with real API)
+    // const cars = fetch('/api/cars.json').then(r=>r.json()).then(renderCars);
+  </script>
+</body>
+</html>
